@@ -19,6 +19,7 @@ export class ShelterController {
   async updateShelterDetails(@Body() input: UpdateShelterControllerInput) {
     console.log(input)
   }
+  
 
 
 }
