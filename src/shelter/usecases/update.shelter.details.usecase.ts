@@ -26,7 +26,7 @@ IUseCase<UpdateShelterDetailsUseCaseInput, UpdateShelterDetailsUseCaseInput>
             phone: shelter.phone,
             whatsApp: shelter.whatsApp,
             email: shelter.email,
-            updatedAt: shelter.updateAt,
+            updatedAt: shelter.updatedAt,
             createdAt: shelter.createdAt
         })
     }
