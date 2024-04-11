@@ -1,5 +1,5 @@
 import { InjectModel } from "@nestjs/mongoose";
-import IPetRepository from "./interface/pet.repository.interface";
+import IPetRepository from "./interfaces/pet.repository.interface";
 import { Pet } from "./schemas/pet.schema";
 import { Injectable } from "@nestjs/common";
 import { Model } from "mongoose";

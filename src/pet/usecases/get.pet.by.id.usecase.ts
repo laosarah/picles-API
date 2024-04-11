@@ -3,7 +3,7 @@ import GetPetByIdUseCaseInput from "./dtos/get.pet.by.id.usecase.input";
 import GetPetByIdUseCaseOutput from "./dtos/get.pet.by.id.usecase.output";
 import { Inject, Injectable } from "@nestjs/common";
 import PetTokens from "../pet.tokens";
-import IPetRepository from "../interface/pet.repository.interface";
+import IPetRepository from "../interfaces/pet.repository.interface";
 import { Pet } from "../schemas/pet.schema";
 import PetNotFoundError from "src/domain/errors/pet.not.found.error";
 
@@ -29,7 +29,7 @@ export default class GetPetByIdUseCase implements IUseCase<GetPetByIdUseCaseInpu
             size: pet.size,
             gender: pet.gender,
             bio: pet.bio,
-            photo: null,
+            photo: pet.photo,
             createdAt: pet.createdAt,
             updatedAt: pet.updatedAt,
         });

@@ -2,21 +2,22 @@ import { BadRequestException, Body, Controller, Delete, Get, Inject, Param, Post
 import CreatePetControllerInput from './dtos/create.pet.controller.input';
 import { IUseCase } from 'src/domain/iusecase.interface';
 import CreatePetUseCaseInput from './usecases/dtos/create.pet.usecase.input';
-import CreatePetUserCaseOutput from './usecases/dtos/create.pet.usecase.output';
+import CreatePetUseCaseOutput from './usecases/dtos/create.pet.usecase.output';
 import PetTokens from './pet.tokens';
 import GetPetByIdUseCaseInput from './usecases/dtos/get.pet.by.id.usecase.input';
 import GetPetByIdUseCaseOutput from './usecases/dtos/get.pet.by.id.usecase.output';
 import UpdatePetControllerInput from './dtos/update.pet.controller.input';
-import UpdatePetByIdUseCaseInput from './dtos/update.pet.by.id.usecase.input';
-import UpdatePetByIdUseCaseOutput from './dtos/update.pet.by.id.usecase.output';
+import UpdatePetByIdUseCaseInput from './usecases/dtos/update.pet.by.id.usecase.input';
+import UpdatePetByIdUseCaseOutput from './usecases/dtos/update.pet.by.id.usecase.output';
 import DeletePetByIdUseCaseInput from './usecases/dtos/delete.pet.by.id.usecase.input';
 import DeletePetByIdUseCaseOutput from './usecases/dtos/delete.pet.by.id.usecase.output';
+
 
 @Controller('pet')
 export class PetController {
 
     @Inject(PetTokens.createPetUseCase)
-    private readonly createPetUseCase: IUseCase<CreatePetUseCaseInput, CreatePetUserCaseOutput>
+    private readonly createPetUseCase: IUseCase<CreatePetUseCaseInput, CreatePetUseCaseOutput>
     
     @Inject(PetTokens.getPetByIdUseCase)
     private readonly getPetByIdUseCase: IUseCase<GetPetByIdUseCaseInput, GetPetByIdUseCaseOutput>
@@ -28,7 +29,7 @@ export class PetController {
     private readonly deletePetByIdUseCase: IUseCase<DeletePetByIdUseCaseInput, DeletePetByIdUseCaseOutput>
 
     @Post()
-    async createPet(@Body() input: CreatePetControllerInput): Promise<CreatePetUserCaseOutput> {
+    async createPet(@Body() input: CreatePetControllerInput): Promise<CreatePetUseCaseOutput> {
         const useCaseInput = new CreatePetUseCaseInput({ ...input })
         return await this.createPetUseCase.run(useCaseInput)
     }

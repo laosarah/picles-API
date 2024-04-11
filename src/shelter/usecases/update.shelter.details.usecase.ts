@@ -7,7 +7,7 @@ import IShelterRepository from "../interfaces/shelter.repository.interface";
 
 @Injectable()
 export default class UpdateShelterDetailsUseCase implements 
-IUseCase<UpdateShelterDetailsUseCaseInput, UpdateShelterDetailsUseCaseInput> 
+IUseCase<UpdateShelterDetailsUseCaseInput, UpdateShelterDetailsUseCaseOutput> 
 {
 
     constructor(

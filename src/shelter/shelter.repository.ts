@@ -5,18 +5,18 @@ import IShelterRepository from "./interfaces/shelter.repository.interface";
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
-export class ShelterRepository implements IShelterRepository {
+export default class ShelterRepository implements IShelterRepository {
     constructor(
         @InjectModel(Shelter.name)
-        private readonly sherlterModel: Model<Shelter>
+        private readonly shelterModel: Model<Shelter>
     ){}
 
     async get(): Promise<Shelter> {
-        return await this.sherlterModel.findOne()
+        return await this.shelterModel.findOne()
     }
 
     async update(data: Partial<Shelter>): Promise<void> {
-        await this.sherlterModel.updateOne(null, {
+        await this.shelterModel.updateOne(null, {
             ...data,
             updatedAt: new Date()
         })

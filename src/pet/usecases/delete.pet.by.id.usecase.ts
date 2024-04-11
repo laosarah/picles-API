@@ -3,7 +3,7 @@ import DeletePetByIdUseCaseInput from "./dtos/delete.pet.by.id.usecase.input";
 import DeletePetByIdUseCaseOutput from "./dtos/delete.pet.by.id.usecase.output";
 import { Inject, Injectable } from "@nestjs/common";
 import PetNotFoundError from "src/domain/errors/pet.not.found.error";
-import IPetRepository from "../interface/pet.repository.interface";
+import IPetRepository from "../interfaces/pet.repository.interface";
 import PetTokens from "../pet.tokens";
 import { Pet } from "../schemas/pet.schema";
 

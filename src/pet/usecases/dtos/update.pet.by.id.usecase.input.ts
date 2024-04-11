@@ -1,10 +1,10 @@
-import CreatePetUseCaseInput from "../usecases/dtos/create.pet.usecase.input"
+import CreatePetUseCaseInput from "./create.pet.usecase.input"
 
 export default class UpdatePetByIdUseCaseInput extends CreatePetUseCaseInput {
     id: string
 
     constructor(data: Partial<UpdatePetByIdUseCaseInput>) {
         super(data)
-        Object.assign(this,)
+        Object.assign(this, data)
     }
 }

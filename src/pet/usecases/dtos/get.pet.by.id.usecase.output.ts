@@ -9,8 +9,7 @@ export default class GetPetByIdUseCaseOutput {
     createdAt: Date;
     updatedAt: Date;
 
-    constructor(data: 
-    Partial<GetPetByIdUseCaseOutput>) {
+    constructor(data: Partial<GetPetByIdUseCaseOutput>) {
         Object.assign(this, data);
     }
 }
