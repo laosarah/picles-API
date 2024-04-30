@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Patch, Put } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Put } from '@nestjs/common';
 import GetShelterDetailsUseCaseOutput from './usecases/dtos/get.shelter.details.usecase.output';
 import { IUseCase } from 'src/domain/iusecase.interface';
 import ShelterTokens from './shelter.tokens';
@@ -6,27 +6,30 @@ import UpdateShelterDetailsUseCaseInput from './usecases/dtos/update.shelter.det
 import UpdateShelterDetailsUseCaseOutput from './usecases/dtos/update.shelter.details.usecase.output';
 import UpdateShelterControllerInput from './dtos/update.shelter.controller.input';
 
-
 @Controller('shelter')
 export class ShelterController {
-  
   @Inject(ShelterTokens.getShelterDetailsUseCase)
-  private readonly getShelterDetailsUseCase: IUseCase<null, GetShelterDetailsUseCaseOutput>
+  private readonly getShelterDetailsUseCase: IUseCase<
+    null,
+    GetShelterDetailsUseCaseOutput
+  >;
 
   @Inject(ShelterTokens.updateShelterDetailsUseCase)
-  private readonly updateShelterDetailsUseCase: IUseCase<UpdateShelterDetailsUseCaseInput, UpdateShelterDetailsUseCaseOutput>
+  private readonly updateShelterDetailsUseCase: IUseCase<
+    UpdateShelterDetailsUseCaseInput,
+    UpdateShelterDetailsUseCaseOutput
+  >;
 
   @Get()
   async getShelterDetails(): Promise<GetShelterDetailsUseCaseOutput> {
-    return await this.getShelterDetailsUseCase.run(null)
+    return await this.getShelterDetailsUseCase.run(null);
   }
 
   @Put()
-  async updateShelterDetails(@Body() input: UpdateShelterControllerInput): Promise<UpdateShelterDetailsUseCaseOutput> {
+  async updateShelterDetails(
+    @Body() input: UpdateShelterControllerInput,
+  ): Promise<UpdateShelterDetailsUseCaseOutput> {
     const useCaseInput = new UpdateShelterDetailsUseCaseInput({ ...input });
     return await this.updateShelterDetailsUseCase.run(useCaseInput);
   }
-  
-
-
 }
